@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="distortion-text"></div>
+
+    
+    <script src="blotter.min.js"></script>
+    <script src="liquid-distort.js"></script>
+    <script>
+
+        var text = new Blotter.Text('Fire', {
+            family: 'Dancing Script',
+            size: 187,
+            fill: "#fff",
+            paddingLeft: 40,
+            paddingRight: 40
+        })
+
+        var material = new Blotter.LiquidDistortMaterial()
+        material.uniforms.uSpeed.value = 0.1
+        material.uniforms.uVolatility.value = 0.2
+
+        var blotter = new Blotter(material, {
+            texts: text
+        })
+
+        var elem = document.getElementById("distortion-text")
+        var scope = blotter.forText(text)
+
+        scope.appendTo(elem)
+
+    </script>
+</body>
+</html>
